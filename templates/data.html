@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Data{% endblock%}
+{% block content %}
+<form class="form-control" action="#", method="post">
+    <b>Filter data by attribute:</b><br/>
+    <input type="radio"  id='sepal_length' name='feature' value='sepal_length' 
+    {% if feature == 'sepal_length' %}checked{% endif%}>
+    <label for="sepal_length">Sepal Length</label><br/>
+    <input type="radio"  id='sepal_width' name='feature' value='sepal_width'
+    {% if feature == 'sepal_width' %}checked{% endif%}>
+    <label for="sepal_width">Sepal Width</label><br/>
+    <input type="radio"  id='petal_length' name='feature' value='petal_length'
+    {% if feature == 'petal_length' %}checked{% endif%}>
+    <label for="petal_length">Petal Length</label><br/>
+    <input type="radio"  id='petal_width' name='feature' value='petal_width'
+    {% if feature == 'petal_width' %}checked{% endif%}>
+    <label for="petal_width">Petal Width</label><br/><br/>
+    <b>Range:</b><br/>
+    <input type="range" id="lower" name="lower" list="tickmarks" min="0" max="7" value={{lower}}>
+    <label for="lower">Lower</label><br/>
+    <input type="range" id="upper" name="upper" list="tickmarks" min="0" max="7" value={{upper}}>
+    <label for="upper">Upper</label><br/>
+    <datalist id="tickmarks">
+        <option value="0" label="0"></option>
+        <option value="1"></option>
+        <option value="2"></option>
+        <option value="3"></option>
+        <option value="4"></option>
+        <option value="5"></option>
+        <option value="6"></option>
+        <option value="7" label="7"></option>
+        </datalist>
+    <input class="btn btn-primary mt-3" type='submit' value="Apply Filter"/>
+</form>
+
+<br/>
+<div style="margin-left: 30px;">
+{% if upper %}
+<b>Applied Filters:</b> <br/>
+Feature: {{feature}} <br/>
+Upper: {{upper}}<br/>
+Lower: {{lower}}
+{% endif %}
+{% for table in tables %}         
+            {{ table|safe }}
+{% endfor %}
+</div>
+{% endblock%}

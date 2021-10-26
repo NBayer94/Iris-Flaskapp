@@ -1,10 +1,17 @@
 {% extends 'base.html' %}
 {% block title %}Prediction{% endblock %}
 {% block content%}
-<form action="#", method="post">
-    <p>Name:</p>
-    <p><input type="text" name="feat_1" value='feature_1'/></p>
-    <p><input type="text" name="feat_2" value='feature_2'/></p>
-    <p><input type='submit' value="Predict"/></p>
+
+<form class="form-control" action="#", method="post">
+    <b>Choose Attribute values:</b><br/>
+    <label for="sepal_width">Petal length:</label>
+    <input type="text" name="sepal_width" value='Sepal with'/><br/> 
+    <label for="sepal_length">Petal length:</label>
+    <input type="text" name="sepal_length" value='Sepal length'/><br/>
+    <label for="petal_width">Petal length:</label>
+    <input type="text" name="petal_width" value='Petal with'/><br/> 
+    <label for="petal_length">Petal length:</label>
+    <input type="text" name="petal_length" value='Petal length'/><br/>
+    <input class="btn btn-primary mt-3" type='submit' value="Predict"/>
 </form>
 {% endblock %}
