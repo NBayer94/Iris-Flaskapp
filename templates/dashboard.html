@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div>
+    <b>Choose Plot Style:</b>
+    <form action="/dashboard/multivariate", method="post">
+        <input style="width: 200px;"  type="submit" class="btn btn-primary mt-3"  name='multivariate' value='Multivariate'><br/>
+    </form>
+    <form action="/dashboard/univariate", method="post">
+        <input style="width: 200px;"  type="submit" class="btn btn-primary mt-3"  name='univariate' value='Univariate'>
+    </form>
+</div>
+<br/>
+
+{% if plot_type == 'multivariate' %}
+<form class='form-control' action='#' method='post'>
+    <p><b>Choose Attributes to plot:</b></p>
+    <div>Attribute 1:</div>
+    <div>
+        <input type="radio" id="petal_length" name="feature_1" value="petal_length">
+        <label for="petal_length">Petal Length</label><br/>
+    </div>
+    <div>    
+        <input type="radio" id="petal_width" name="feature_1" value="petal_width">
+        <label for="petal_width">Petal Width</label>
+    </div>
+    <div>    
+        <input type="radio" id="sepal_length" name="feature_1" value="sepal_length">
+        <label for="sepal_length">Sepal Length</label>
+    </div>
+    <div>    
+        <input type="radio" id="sepal_width" name="feature_1" value="sepal_width">
+        <label for="sepal_width">Sepal Width</label>
+    </div>
+    <br/>
+    <div>Attribute 2:</div>
+    <div>
+        <input type="radio" id="petal_length_2" name="feature_2" value="petal_length">
+        <label for="petal_length_2">Petal Length</label><br/>
+    </div>
+    <div>
+        <input type="radio" id="petal_width_2" name="feature_2" value="petal_width">
+        <label for="petal_width_2">Petal Width</label>
+    </div>
+    <div>    
+        <input type="radio" id="sepal_length_2" name="feature_2" value="sepal_length">
+        <label for="sepal_length_2">Sepal Length</label>
+    </div>
+    <div>    
+        <input type="radio" id="sepal_width_2" name="feature_2" value="sepal_width">
+        <label for="sepal_width_2">Sepal Width</label>
+    </div>
+    <div>
+        <input type="submit" class="btn btn-primary mt-3"  value="Show Plot" name="show_plot"/>
+    </div>
+</form>
+{% elif plot_type == 'univariate' %}
+
+
+<form class="form-control" action="#" method="post">
+    <p><b>Choose Attribute to plot</b></p>
+    <div>
+        <input type="radio" id="petal_length" name="feature_1" value="petal_length">
+        <label for="petal_length">Petal Length</label><br/>
+    </div>
+    <div>    
+        <input type="radio" id="petal_width" name="feature_1" value="petal_width">
+        <label for="petal_width">Petal Width</label>
+    </div>
+    <div>    
+        <input type="radio" id="sepal_length" name="feature_1" value="sepal_length">
+        <label for="sepal_length">Sepal Length</label>
+    </div>
+    <div>    
+        <input type="radio" id="sepal_width" name="feature_1" value="sepal_width">
+        <label for="sepal_width">Sepal Width</label>
+    </div>
+    <div>
+        <input type="submit" class="btn btn-primary mt-3"  value="Show Plot" name="show_plot"/>
+    </div>
+</form>
+
+{% endif %}
+
+{% if plot %}
+<img src='data:image/png;base64,{{plot}}'/>
+{% endif %}
+
+{% endblock %}

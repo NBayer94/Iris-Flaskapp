@@ -1,17 +1,26 @@
 {% extends 'base.html' %}
 {% block title %}Prediction{% endblock %}
+{% block style %}
+label {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+  }
+{% endblock %}
+
 {% block content%}
 
 <form class="form-control" action="#", method="post">
     <b>Choose Attribute values:</b><br/>
-    <label for="sepal_width">Petal length:</label>
-    <input type="text" name="sepal_width" value='Sepal with'/><br/> 
-    <label for="sepal_length">Petal length:</label>
-    <input type="text" name="sepal_length" value='Sepal length'/><br/>
-    <label for="petal_width">Petal length:</label>
-    <input type="text" name="petal_width" value='Petal with'/><br/> 
+    <label for="sepal_width">Sepal width:</label>
+    <input type="text" name="sepal_width" value='E.g. 4.2'/><br/> 
+    <label for="sepal_length">Sepal length:</label>
+    <input type="text" name="sepal_length"><br/>
+    <label for="petal_width">Petal width:</label>
+    <input type="text" name="petal_width"/><br/> 
     <label for="petal_length">Petal length:</label>
-    <input type="text" name="petal_length" value='Petal length'/><br/>
-    <input class="btn btn-primary mt-3" type='submit' value="Predict"/>
+    <input type="text" name="petal_length"/><br/>
+    <div style="margin-left: 160px;"><input class="btn btn-primary mt-3" type='submit' value="Predict"/></div>
+    
 </form>
 {% endblock %}

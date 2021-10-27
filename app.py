@@ -2,9 +2,13 @@ import numpy as np
 from flask import Flask, render_template, request, redirect, sessions, url_for, session
 from data import load_data
 from utils import clf_dict, load_model
+from dashboard import dashboard
 
 app = Flask(__name__)
 app.secret_key = 'secret'
+
+# Register dashboard blueprint
+app.register_blueprint(dashboard, url_prefix='/dashboard')
 
 # Load model and data
 data = load_data()
@@ -48,7 +52,7 @@ def show_data():
         lower = float(request.form['lower'])
 
         df = data.loc[(data[feature_processed] <= upper) & (data[feature_processed] >= lower)]
-        return render_template('data.html', tables=[df.to_html()], feature=feature, upper=upper, lower=lower)
+        return render_template('data.html', tables=[df.to_html()], feature=feature, upper=upper, lower=lower, filtered=True)
 
 if __name__ == '__main__':
     app.run(port=3000, debug=True)
